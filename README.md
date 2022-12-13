@@ -2,7 +2,7 @@
 
  ![Badge en Desarollo](https://img.shields.io/badge/STATE-SUCESS-green) 
  ![GitHub Org's stars](https://img.shields.io/github/stars/nortigozab?style=social)
- ![GitHub](https://img.shields.io/github/license/nortigozab/softwareIngEco)
+ ![GitHub](https://img.shields.io/github/license/nortigozab/softwareingeco)
 _____________________________________________
 Este Software se hace con fines educativos, para el uso de:
 
