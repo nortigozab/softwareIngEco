@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <title>Capitalización y Amortización</title>
+</head>
+
+<body>
+    <div class="container p-4 text-center text-light">
+        <h1 class="text-center mb-5">Capitalización y Amortización</h1>
+
+        <nav>
+            <div class="nav nav-tabs nav-justified" role="tablist">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#nav-amortizacion" type="button"
+                    role="tab" aria-selected="false">
+                    Amortización
+                </button>
+
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-capitalizacion" type="button"
+                    role="tab" aria-selected="true">
+                    Capitalización
+                </button>
+            </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-amortizacion" role="tabpanel" tabindex="0">
+                <form id="formulario-amortizacion" class="row g-3 mt-2" novalidate>
+                    <div class="col-md-12">
+                        <label for="valor-deuda" class="form-label">Valor deuda</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="text" class="form-control" min="0" id="valor-deuda" name="valorDeuda"
+                                required />
+                            <span class="input-group-text">,00</span>
+                            <div class="invalid-feedback">
+                                El valor de la deuda no puede estar en blanco o ser negativo.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="numero-pagos" class="form-label">Número de pagos</label>
+                        <input type="number" class="form-control" name="numeroPagos" id="numero-pagos" min="1"
+                            max="1000" required />
+                        <div class="invalid-feedback">
+                            El número de pagos debe estar entre 1 y 1000.
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label for="modalidad-pago" class="form-label">Modalidad de pago</label>
+                        <select id="modalidad-pago" name="modalidadPago" class="form-select" required>
+                            <option selected disabled value="">Seleccione...</option>
+                            <option value="12">Mensual</option>
+                            <option value="6">Bimestral</option>
+                            <option value="4">Trimestral</option>
+                            <option value="3">Cuatrimestral</option>
+                            <option value="2">Semestral</option>
+                            <option value="1">Anual</option>
+                        </select>
+                        <div class="invalid-feedback">Seleccione una opción válida.</div>
+                    </div>
+                    <div class="col-6">
+                        <label for="interes" class="form-label">Tasa de interés (En porcentaje)</label>
+                        <div class="input-group">
+                            <input type="text" inputmode="numeric" class="form-control" id="interes" name="interes"
+                                min="1" max="100" pattern="(^100(\.0{1,2})?$)|(^([1-9]([0-9])?)(\.[0-9]{1,2})?$)"
+                                required />
+                            <span class="input-group-text">%</span>
+                            <div class="invalid-feedback">
+                                La tasa de interés no puede estar en blanco y debe estar entre
+                                1 y 100 (Puede incluir decimales usando el punto).
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="modalidad-interes" class="form-label">Modalidad del interés</label>
+                        <select id="modalidad-interes" name="modalidadInteres" class="form-select" required>
+                            <option selected disabled value="">Seleccione...</option>
+                            <option value="NM">Nominal Mensual</option>
+                            <option value="NB">Nominal Bimestral</option>
+                            <option value="NT">Nominal Trimestral</option>
+                            <option value="NC">Nominal Cuatrimestral</option>
+                            <option value="NS">Nominal Semestral</option>
+                            <option disabled>──────────</option>
+                            <option value="MV">Mes Vencido</option>
+                            <option value="BV">Bimestre Vencido</option>
+                            <option value="TV">Trimestre Vencido</option>
+                            <option value="CV">Cuatrimestre Vencido</option>
+                            <option value="SV">Semestre Vencido</option>
+                            <option disabled>──────────</option>
+                            <option value="CM">Convertible Mensual</option>
+                            <option value="CS">Convertible Bimestral</option>
+                            <option value="CT">Convertible Trimestral</option>
+                            <option value="CC">Convertible Cuatrimestral</option>
+                            <option value="CS">Convertible Semestral</option>
+                            <option disabled>──────────</option>
+                            <option value="EM">Efectiva Mensual</option>
+                            <option value="EB">Efectiva Bimestral</option>
+                            <option value="ET">Efectiva Trimestral</option>
+                            <option value="EC">Efectiva Cuatrimestral</option>
+                            <option value="ES">Efectiva Semestral</option>
+                            <option value="EA">Efectiva Anual</option>
+                            <option disabled>──────────</option>
+                            <option value="PM">Periódica Mensual</option>
+                            <option value="PB">Periódica Bimestral</option>
+                            <option value="PT">Periódica Trimestral</option>
+                            <option value="PC">Periódica Cuatrimestral</option>
+                            <option value="PS">Periódica Semestral</option>
+                            <option value="PA">Periódica Anual</option>
+                        </select>
+                        <div class="invalid-feedback">Seleccione una opción válida.</div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-dark">
+                            Mostrar tabla de amortización
+                        </button>
+                    </div>
+                </form>
+
+                <div id="datos-amortizacion" class="invisible mt-4">
+                    <hr />
+                    <h3 id="title-tabla-amortizacion" class="mt-3">
+                        Tabla de Amortización
+                    </h3>
+
+                    <div class="table-responsive">
+                        <table id="tabla-amortizacion" class="table table-bordered text-center mt-3 text-light"></table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="nav-capitalizacion" role="tabpanel" tabindex="0">
+                <form id="formulario-capitalizacion" class="row g-3 mt-2 needs-validation" novalidate>
+                    <div class="col-md-12">
+                        <label for="valorCapitalizable" class="form-label">Valor a capitalizar</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" id="valorCapitalizable" required />
+                            <span class="input-group-text">.00</span>
+                            <div class="invalid-feedback">
+                                Ingrese un valor a capitalizar válido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="numeroPagos" class="form-label">Número de pagos</label>
+                        <input type="number" class="form-control" id="numeroPagos" required />
+                        <div class="invalid-feedback">
+                            Ingrese un número de pagos válido.
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label for="modalidadPago" class="form-label">Modalidad de pago</label>
+                        <select id="modalidadPago" class="form-select" required>
+                            <option selected disabled value="">Seleccione...</option>
+                            <option value="12">Mensual</option>
+                            <option value="6">Bimestral</option>
+                            <option value="4">Trimestral</option>
+                            <option value="3">Cuatrimestral</option>
+                            <option value="2">Semestral</option>
+                            <option value="1">Anual</option>
+                        </select>
+                        <div class="invalid-feedback">Seleccione una opción válida.</div>
+                    </div>
+                    <div class="col-6">
+                        <label for="interes" class="form-label">Interes (En porcentaje)</label>
+                        <div class="input-group">
+                            <input type="text" inputmode="numeric" class="form-control" id="interes" min="1" max="100"
+                                pattern="\d*" required />
+                            <span class="input-group-text">%</span>
+                            <div class="invalid-feedback">Ingrese un interes válido.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="modalidadInteres" class="form-label">Modalidad del interes</label>
+                        <select id="modalidadInteres" class="form-select" required>
+                            <option selected disabled value="">Seleccione...</option>
+                            <option value="EM">Efectivo Mensual</option>
+                            <option value="ET">Efectivo Trimestral</option>
+                            <option value="ES">Efectivo Semestral</option>
+                            <option value="EA">Efectivo Anual</option>
+                            <option value="CM">Convertible Mensual</option>
+                            <option value="CT">Convertible Trimestral</option>
+                            <option value="CS">Convertible Semestral</option>
+                            <option value="CA">Convertible Anual</option>
+                        </select>
+                        <div class="invalid-feedback">Seleccione una opción válida.</div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-dark">
+                            Mostrar tabla de capitalización
+                        </button>
+                    </div>
+                </form>
+
+                <div id="datos-capitalizacion" class="invisible mt-4">
+                    <hr />
+                    <h3 id="title-tabla-capitalizacion" class="mt-3">
+                        Tabla de Capitalización
+                    </h3>
+
+                    <div class="table-responsive">
+                        <table id="tabla-capitalizacion" class="table table-bordered text-center mt-3 text-light"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../js/amortizacion-capitalizacion.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
