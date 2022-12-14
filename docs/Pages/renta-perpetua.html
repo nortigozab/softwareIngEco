@@ -33,15 +33,16 @@
     <div class="container py-4 px-3 mx-auto text-center text-light">
       <div class="card col-12 bg-transparent">
         <div class="card-body">
-          <h5 class="card-title">RENTA PERPETUA</h5>
+          <h5 class="card-title">Anualidades perpetuas</h5>
           <div class="col-12 d-flex">
             <div class="col-12">
               <strong>
-                <a>Renta perpetua</a>
+                <a>Anualidad perpetua</a>
               </strong>
               <br />
-              <form id="RentaPerpetua">
-                <label class="form-label">Ingrese el Valor:</label>
+              <img width="150" height="150" style="size:20px;" src="../resources/img/perpetuas.jpeg">
+              <form id="RentaPerpetua" style="width: 60%; margin-top: 25px; margin-left: 20%">
+                <label class="form-label mt-2">Ingrese el Valor:</label>
                 <input
                   id="Valor"
                   class="form-control"
@@ -49,7 +50,7 @@
                   pattern="[0-9]+"
                   required
                 />
-                <label class="form-label">Ingrese el porcentaje</label>
+                <label class="form-label mt-2">Ingrese el porcentaje</label>
                 <div class="input-group">
                   <input
                     type="text"
@@ -64,14 +65,17 @@
                   <span class="input-group-text">%</span>
                   <div class="invalid-feedback">Ingrese un interes válido.</div>
                 </div>
-                <label class="form-label">Este es el valor:</label>
+                <label class="form-label mt-3">Este es el valor:</label>
                 <p class="form-label" id="resultado"></p>
                 <div class="col-12">
-                  <button type="submit" class="btn btn-dark">
+                  <button type="submit" class="btn btn-dark mt-3">
                     Calcular
                   </button>
                 </div>
               </form>
+              <a href="../index.html" class="btn btn-dark mt-5"
+                >volver al menu principal</a
+              >
             </div>
           </div>
         </div>

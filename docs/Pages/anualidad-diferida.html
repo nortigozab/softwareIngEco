@@ -15,19 +15,20 @@
     <div class="container py-4 px-3 mx-auto text-center text-light">
         <div class="card col-12 bg-transparent">
             <div class="card-title">
-                <h5 class="card-title">ANUALIDAD DIFERIDA</h5>
+                <h5 class="card-title">Anualidad diferida</h5>
             </div>
             <div class="card-body">
                 <div class="col-12 d-flex">
                     <div class="col-12 trxt-center">
                         <div class="card bg-transparent">
                             <div class="card-body">
-                                <label> VALOR PRESENTE</label><br /><br />
-                                <form id="valor-presente">
-                                    <label>INGRESE EL VALOR DE LA CUOTA (*)</label>
+                                <label> Valor presente</label><br /><br />
+                                <img width="350" height="150" style="size:20px;" src="../resources/img/diferida.jpeg">
+                                <form id="valor-presente"  style="width: 60%; margin-left: 20%;">
+                                    <label class="mt-2">Ingrese el numero del valor de la cuota</label>
                                     <input id="valorcuota" class="form-control" type="number" pattern="[0-9]+" />
 
-                                    <label>INGRESE EL INTERES(*)</label>
+                                    <label class="mt-2">Ingrese el porcentaje del interes</label>
                                     <div class="input-group">
                                         <input id="interes" class="form-control"
                                             pattern="(^100(\.0{1,3})?$)|(^([1-9]([0-9])?)(\.[0-9]{1,3})?$)"
@@ -37,16 +38,15 @@
                                             Ingrese un interes válido.
                                         </div>
                                     </div>
-                                    <label>INGRESE EL TIEMPO(*)</label>
+                                    <label class="mt-2">Ingrese el valor del tiempo en el que va a realizar el calculo</label>
                                     <input id="tiempo" class="form-control" type="number" pattern="[0-9]+" />
-                                    <label>INGRESE EL PERIDO DE GRACIA(*)</label>
+                                    <label class="mt-2">Ingrese el numero del periodo de gracia </label>
                                     <input id="tGracia" class="form-control" type="number" pattern="[0-9]+"/><br />
-                                    <label>En caso de que necesite hallar el valor de la
-                                        cuota:</label>
+                                    <label class="mt-2">Si se llega a necesitar calcular el valor de la cuota porfavor deje la casilla de cuota vacia y llene la casilla de abajo</label>
                                     <label class="form-label">Ingrese el VP</label>
                                     <input class="form-control" id="vp" type="number" />
 
-                                    <label class="form-label">Este es el valor:</label>
+                                    <label class="form-label mt-3">Este es el resultado:</label>
                                     <p class="form-label" id="ValorPresente"></p>
 
                                     <div class="col-12">
@@ -59,7 +59,10 @@
                         </div>
                     </div>
                 </div>
+                <a href="../index.html" class="btn btn-dark mt-5"
+                >volver al menu principal</a>
             </div>
+            
         </div>
     </div>
     <script type="module" src="../js/diferida.js"></script>
