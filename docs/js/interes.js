@@ -1,16 +1,8 @@
 import "./main.js";
 
-const form = document.getElementById("interes-simple");
 const formCompuesto = document.getElementById("interes-compuesto");
 
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-  const valor = form.ValorPrestamo.value;
-  const interes = parseFloat(form.portentaje.value);
-  const tiempo = parseFloat(form.tiempo.value);
-  const formaTiempo = form.formaTiempo.value;
-  calcularInteresSimple(valor, interes, tiempo, formaTiempo);
-});
+
 
 formCompuesto.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -20,32 +12,9 @@ formCompuesto.addEventListener("submit", function (event) {
   const te = formCompuesto.te.value;
   const tn = formCompuesto.tn.value;
   const formaTiempo = formCompuesto.formaTiempo.value;
-  calcularInteresCompuesto(valor, interes, tiempo, te, tn, formaTiempo);
+  const monto = formCompuesto.monto.value;
+  calcularInteresCompuesto(valor, interes, tiempo, te, tn, formaTiempo,monto);
 });
-
-const calcularInteresSimple = (valorp, tasa, time, tiempo) => {
-  console.log(valorp, tasa, time, tiempo);
-  if (valorp < 0 || tasa < 0 || tasa < 0) {
-    alert("No se aceptan valores negativos");
-    document.getElementById("resultado").innerHTML = null;
-  } else if (valorp == 0 || tasa == 0 || time == 0 || tiempo == "default") {
-    alert("Ingrese todos los valores");
-  } else {
-    let result;
-    switch (tiempo) {
-      case "dias":
-        result = valorp * (tasa / 100) * (time / 365);
-        document.getElementById("resultado").innerHTML =
-          "$ " + new Intl.NumberFormat('es-CP').format(result.toFixed(3));
-        break;
-      case "ano":
-        result = valorp * (tasa / 100) * time;
-        document.getElementById("resultado").innerHTML =
-          "$ " + new Intl.NumberFormat('es-CP').format(result.toFixed(3));
-        break;
-    }
-  }
-};
 
 const calcularInteresCompuesto = (
   valorP,
@@ -53,13 +22,23 @@ const calcularInteresCompuesto = (
   tiempoCompuestp,
   te,
   tn,
-  tiempo
+  tiempo,monto
 ) => {
-
-  if (valorP < 0 || tasa < 0 || tiempoCompuestp < 0) {
+if(valorP!=0 && monto == 0)Vmonto(valorP,tasa,tiempoCompuestp,te,tn,tiempo);
+else{
+  if(monto!=0 && valorP==0)Vcapital(monto,tasa,tiempoCompuestp,te,tn,tiempo);
+  else{
+    if(monto!=0 && valorP!=0)alert("Elija entre uno, monto o valor")
+    if(monto==0 && valorP==0)alert("Ingrese valores entre monto o valor")
+  }
+}
+  
+};
+function Vmonto(valorP,tasa,tiempoCompuestp,te,tn,tiempo){
+  if (tasa < 0 || tiempoCompuestp < 0) {
     alert("No se aceptan valores negativos");
     document.getElementById("resultadoCompuesto").innerHTML = null;
-  } else if (valorP == 0 || tasa == 0 || tiempoCompuestp == 0) {
+  } else if (tasa == 0 || tiempoCompuestp == 0) {
     alert("Ingrese todos los valores");
   } else {
     if (te == "te" && tn == "tn") {
@@ -99,12 +78,62 @@ const calcularInteresCompuesto = (
             }
           }
           let resultado = valorP * tasaMultiplicar;
-          document.getElementById("resultadoCompuesto").innerHTML = "$ "+new Intl.NumberFormat('es-CP').format(resultado.toFixed(3));
+          document.getElementById("resultadoCompuesto").innerHTML = "El monto es $ "+new Intl.NumberFormat('es-CP').format(resultado.toFixed(3));
         }
       }
     }
   }
-};
+}
+function Vcapital(monto,tasa,tiempoCompuestp,te,tn,tiempo){
+  if (tasa < 0 || tiempoCompuestp < 0) {
+    alert("No se aceptan valores negativos");
+    document.getElementById("resultadoCompuesto").innerHTML = null;
+  } else if (tasa == 0 || tiempoCompuestp == 0) {
+    alert("Ingrese todos los valores");
+  } else {
+    if (te == "te" && tn == "tn") {
+      alert("Ingrese todos los valores");
+    } else {
+      if (te != "te" && tn != "tn") alert("Elija solo un tipo de interes");
+      else {
+        if (tiempo == "tiempo") alert("Elija tiempo");
+        else {
+          let tasaMultiplicar;
+          if (te != "te") {
+            let t = te.charAt(1);
+            if (t == tiempo)
+              tasaMultiplicar = Math.pow(1 + tasa / 100, tiempoCompuestp);
+            else {
+              tiempoCompuestp = convertTiempoCompuesto(
+                t,
+                tiempoCompuestp,
+                tiempo
+              );
+              tasaMultiplicar = Math.pow(1 + tasa / 100, tiempoCompuestp);
+            }
+          }
+          if (tn != "tn") {
+            let t = tn.charAt(1);
+            tasa = convertNominaltoEfectiva(t, tasa);
+            if (t == tiempo)
+              tasaMultiplicar = Math.pow(1 + tasa / 100, tiempoCompuestp);
+            else {
+              tiempoCompuestp = convertTiempoCompuesto(
+                t,
+                tiempoCompuestp,
+                tiempo
+              );
+              console.log(tiempoCompuestp);
+              tasaMultiplicar = Math.pow(1 + tasa / 100, tiempoCompuestp);
+            }
+          }
+          let resultado = monto / tasaMultiplicar;
+          document.getElementById("resultadoCompuesto").innerHTML = "El capital es $ "+new Intl.NumberFormat('es-CP').format(resultado.toFixed(3));
+        }
+      }
+    }
+  }
+}
 function convertNominaltoEfectiva(t, tasa) {
   switch (t) {
     case "m":

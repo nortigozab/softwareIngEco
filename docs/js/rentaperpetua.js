@@ -15,6 +15,6 @@ form.addEventListener("submit", function (event) {
 const mostrarData = (valor, tasa) => {
     const tasaReal = tasa / 100;
     const result = (valor / tasaReal);
-    document.getElementById("resultado").innerHTML = result;
+    document.getElementById("resultado").innerHTML = "$ "+new Intl.NumberFormat('es-CP').format(result.toFixed(3));
 
 }

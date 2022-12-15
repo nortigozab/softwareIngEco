@@ -26,7 +26,7 @@
                                 <img width="350" height="150" style="size:20px;" src="../resources/img/diferida.jpeg">
                                 <form id="valor-presente"  style="width: 60%; margin-left: 20%;">
                                     <label class="mt-2">Ingrese el numero del valor de la cuota</label>
-                                    <input id="valorcuota" class="form-control" type="number" pattern="[0-9]+" />
+                                    <input id="valorcuota" class="form-control" type="number" pattern="[0-9]+" step="0.001" />
 
                                     <label class="mt-2">Ingrese el porcentaje del interes</label>
                                     <div class="input-group">
@@ -44,7 +44,7 @@
                                     <input id="tGracia" class="form-control" type="number" pattern="[0-9]+"/><br />
                                     <label class="mt-2">Si se llega a necesitar calcular el valor de la cuota porfavor deje la casilla de cuota vacia y llene la casilla de abajo</label>
                                     <label class="form-label">Ingrese el VP</label>
-                                    <input class="form-control" id="vp" type="number" />
+                                    <input class="form-control" id="vp" type="number" pattern="[0-9]+" step="0.001"/>
 
                                     <label class="form-label mt-3">Este es el resultado:</label>
                                     <p class="form-label" id="ValorPresente"></p>

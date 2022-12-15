@@ -98,7 +98,7 @@ const createTable = (valorDeuda, numPagos, cuota, realInterest, table, data) => 
 }
 
 const createTableCapitalization = (valorCapitalizable, numPagos, cuota, realInterest, table, data) => {
-    let periodo = 0;
+    let periodo = 1;
     let saldo = cuota;
     let valorInteres = 0;
     let valorCuota = cuota;

@@ -56,7 +56,7 @@ export const convertInterestT = (i, o, d) => {
         console.log('Se convierte a j\nOrigen es i: ', origen[0], 'Destino es j: ', destino[0]);
     }
     i *= 100;
-    return i.toFixed(2);
+    return i.toFixed(3);
 }
 
 export const calculateFee = (p, i, n) => {
@@ -72,5 +72,5 @@ export const calculateFeeFuture = (p, i, n) => {
     return parseFloat(a.toFixed(3));
 }
 export const convertNumber = (value) => {
-    return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value);
+    return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value.toFixed(3));
 }
