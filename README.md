@@ -6,19 +6,26 @@
 _____________________________________________
 Este Software se hace con fines educativos, para el uso de:
 
-* Interes 
-    * Interes Simpre
+* Interes Compuesto y Conversiones 
     * Interes Compuesto
-* Descuentos
-* Conversiones 
-* Anualidades Generales
-    * Valor Presente
-        * Valor Cuota
-    * Valor Futuro
-        * Valor Cuota
-* Anualidad Diferida
-* Renta Perpetua 
-* Capitalización y Amortización
+        * Monto
+        * Capital
+    * Conversiones
+* Anualidad Ordinaria
+    * Anualidades Generales
+        * Valor Presente
+            * VP
+            * Valor Cuota
+        * Valor Futuro
+            * VF
+            * Valor Cuota
+    * Capitalización y Amortización
+* Anualidad Diferida y Perpetua 
+    * Anualidad Diferida
+        * Valor Presente
+            * VP
+            * Valor Cuota
+    * Anualidad Perpetua 
 
 ## License  
 
